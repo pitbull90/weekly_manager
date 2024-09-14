@@ -24,14 +24,15 @@
         
         <div id="monday_card" class="day-card">
             <div class="day-title">Monday</div>
-            <div class="task">
-                <input type="checkbox" id="monday-task1">
-                <label for="monday-task1" class="task-label">Task 1 <span class="personal-tag">Personal</span></label>
+            <div id="taskListMonday">
+                <div class="task">
+                    <label for="monday-task1" class="task-label">Task 1 <span class="personal-tag">Personal</span></label>
+                </div>
             </div>
             <div class="add-task">
                 <form>
                     <input class="user-todo" type="text" placeholder="Click to quickly add a task" required>
-                    <button class="submit-button"></button>
+                    <button onclick="addTask('monday', 'taskInputMonday')" class="submit-button"></button>
                 </form>
             </div>
         </div>
@@ -41,9 +42,7 @@
 
         <div id="tuesday_card" class="day-card">
             <div class="day-title">Tuesday</div>
-            <div class="task">
-                <input type="checkbox" id="tuesday-task1">
-                <label for="tuesday-task1" class="task-label">Task 1 <span class="personal-tag">Personal</span></label>
+            <div class="task-list">
             </div>
             <div class="add-task">
                 <input class="user-todo" type="text" placeholder="Click to quickly add a task" required>
@@ -53,9 +52,7 @@
         
         <div id="wednesday_card" class="day-card">
             <div class="day-title">Wednesday</div>
-            <div class="task">
-                <input type="checkbox" id="tuesday-task1">
-                <label for="tuesday-task1" class="task-label">Task 1 <span class="personal-tag">Personal</span></label>
+            <div class="task-list">
             </div>
             <div class="add-task">
                 <input class="user-todo" type="text" placeholder="Click to quickly add a task" required>
@@ -65,9 +62,7 @@
 
         <div id="thursday_card" class="day-card">
             <div class="day-title">Thursday</div>
-            <div class="task">
-                <input type="checkbox" id="tuesday-task1">
-                <label for="tuesday-task1" class="task-label">Task 1 <span class="personal-tag">Personal</span></label>
+            <div class="task-list">
             </div>
             <div class="add-task">
                 <input class="user-todo" type="text" placeholder="Click to quickly add a task" required>
@@ -77,35 +72,27 @@
 
         <div id="friday_card" class="day-card">
             <div class="day-title">Friday (Today)</div>
-            <div class="task">
-                <input type="checkbox" id="friday-task2">
-                <label for="friday-task2" class="task-label">Task 2 <span class="personal-tag">Personal</span></label>
-            </div>
-            <div class="task">
-                <input type="checkbox" id="friday-task3">
-                <label for="friday-task3" class="task-label">Task 3 <span class="personal-tag">Personal</span></label>
+            <div class="task-list">
             </div>
             <div class="add-task">
                 <input class="user-todo" type="text" placeholder="Click to quickly add a task" required>
                 <button class="submit-button"></button>
             </div>
         </div>
+
         <div id="saturday_card" class="day-card">
             <div class="day-title">Saturday</div>
-            <div class="task">
-                <input type="checkbox" id="saturday-task1">
-                <label for="saturday-task1" class="task-label">task 1 <span class="personal-tag">Personal</span></label>
+            <div class="task-list">
             </div>
             <div class="add-task">
                 <input class="user-todo" type="text" placeholder="Click to quickly add a task" required>
                 <button class="submit-button"></button>
             </div>
         </div>
+
         <div id="sunday_card" class="day-card">
             <div class="day-title">Sunday</div>
-            <div class="task">
-                <input type="checkbox" id="sunday-task1">
-                <label for="sunday-task1" class="task-label">task 1 <span class="personal-tag">Personal</span></label>
+            <div class="task-list">
             </div>
             <div class="add-task">
                 <input class="user-todo" type="text" placeholder="Click to quickly add a task" required>
