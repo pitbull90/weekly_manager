@@ -24,31 +24,27 @@
         
         <div id="monday_card" class="day-card">
             <div class="day-title">Monday</div>
-            <div id="taskListMonday">
-                <div class="task">
-                    <label for="monday-task1" class="task-label">Task 1 <span class="personal-tag">Personal</span></label>
-                </div>
+            <div id="taskListMonday"">
             </div>
             <div class="add-task">
-                <form>
-                    <input class="user-todo" type="text" placeholder="Click to quickly add a task" required>
-                    <button onclick="addTask('monday', 'taskInputMonday')" class="submit-button"></button>
-                </form>
+              <form onsubmit="addTask(event, 'monday', 'taskInputMonday')">
+                <input id="taskInputMonday" class="user-todo" type="text" placeholder="Click to quickly add a task" required>
+                <button type="submit" class="submit-button"></button>
+              </form>
             </div>
-        </div>
+          </div>
 
-
-
-
-        <div id="tuesday_card" class="day-card">
+          <div id="tuesday_card" class="day-card">
             <div class="day-title">Tuesday</div>
-            <div class="task-list">
+            <div id="taskListTuesday"">
             </div>
             <div class="add-task">
-                <input class="user-todo" type="text" placeholder="Click to quickly add a task" required>
-                <button class="submit-button"></button>
+              <form onsubmit="addTask(event, 'tuesday', 'taskInputTuesday')">
+                <input id="taskInputTuesday" class="user-todo" type="text" placeholder="Click to quickly add a task" required>
+                <button type="submit" class="submit-button"></button>
+              </form>
             </div>
-        </div>
+          </div>
         
         <div id="wednesday_card" class="day-card">
             <div class="day-title">Wednesday</div>

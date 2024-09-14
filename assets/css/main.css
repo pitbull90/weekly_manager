@@ -27,7 +27,7 @@ body {
     margin-bottom: 15px;
 }
 .task {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     margin-bottom: 10px;
 }
