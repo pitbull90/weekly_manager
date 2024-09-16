@@ -1,3 +1,4 @@
+// Add task to respective day of the week
 function addTask(event, dayId, inputId) {
   event.preventDefault(); // Prevent form submission from reloading the page
 
