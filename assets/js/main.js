@@ -17,8 +17,9 @@ function addTask(event, dayId, inputId) {
     task.textContent = taskValue; // Set the task value as the label text
 
     const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove';
+    removeButton.textContent = '×'; // Using × instead of 'Remove' for a more minimal look
     removeButton.setAttribute('class', 'remove-task-button');
+    removeButton.setAttribute('title', 'Remove task'); // Add a tooltip
     removeButton.onclick = function () {
       removeTask(taskItem);
     };
@@ -48,8 +49,8 @@ function removeAllTasks(dayId) {
   taskList.innerHTML = '';
 }
 
-// Add "Remove All" buttons to each day card
-function addRemoveAllButtons() {
+// Add "Clear All" buttons to each day card
+function addClearAllButtons() {
   const days = [
     'monday',
     'tuesday',
@@ -61,15 +62,15 @@ function addRemoveAllButtons() {
   ];
   days.forEach((day) => {
     const dayCard = document.getElementById(`${day}_card`);
-    const removeAllButton = document.createElement('button');
-    removeAllButton.textContent = 'Remove All Tasks';
-    removeAllButton.setAttribute('class', 'remove-all-button');
-    removeAllButton.onclick = function () {
+    const clearAllButton = document.createElement('button');
+    clearAllButton.textContent = 'Clear All';
+    clearAllButton.setAttribute('class', 'remove-all-button');
+    clearAllButton.onclick = function () {
       removeAllTasks(day);
     };
-    dayCard.appendChild(removeAllButton);
+    dayCard.appendChild(clearAllButton);
   });
 }
 
 // Call this function when the page loads
-document.addEventListener('DOMContentLoaded', addRemoveAllButtons);
+document.addEventListener('DOMContentLoaded', addClearAllButtons);

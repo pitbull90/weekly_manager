@@ -136,3 +136,40 @@ div.add-task form {
         font-size: 32px;
     }
 }
+
+/* Add these CSS rules to your existing stylesheet */
+
+.remove-task-button,
+.remove-all-button {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 2px 5px;
+    margin-left: 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.remove-task-button:hover,
+.remove-all-button:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.remove-all-button {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    background-color: #f0f0f0;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
