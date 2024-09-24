@@ -62,13 +62,14 @@ function addClearAllButtons() {
   ];
   days.forEach((day) => {
     const dayCard = document.getElementById(`${day}_card`);
+    const dayFooter = dayCard.querySelector('.day-footer');
     const clearAllButton = document.createElement('button');
     clearAllButton.textContent = 'Clear All';
     clearAllButton.setAttribute('class', 'remove-all-button');
     clearAllButton.onclick = function () {
       removeAllTasks(day);
     };
-    dayCard.appendChild(clearAllButton);
+    dayFooter.appendChild(clearAllButton);
   });
 }
 
