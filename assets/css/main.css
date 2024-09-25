@@ -1,18 +1,21 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 20px;
 }
+
 .container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
 }
+
 .day-card {
     background-color: white;
     border-radius: 10px;
@@ -43,27 +46,47 @@ body {
 }
 
 .task {
-    /* display: flex; */
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
 }
+
+.task:last-child {
+    border-bottom: none;
+}
+
+.task:hover {
+    background-color: #f9f9f9;
+}
+
 .task input[type="checkbox"] {
     margin-right: 10px;
 }
+
 .task-label {
     font-size: 14px;
     color: #333;
+    flex-grow: 1;
+    margin-right: 10px;
+    word-break: break-word;
 }
+
 .personal-tag {
     font-size: 12px;
     color: #888;
 }
+
 .add-task {
     margin-top: 15px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
+
 .add-task input[type="text"] {
     flex-grow: 1;
     padding: 8px;
@@ -71,9 +94,11 @@ body {
     border-radius: 5px;
     font-size: 14px;
 }
+
 .add-task input[type="text"]::placeholder {
     color: #888;
 }
+
 .submit-button {
     width: 30px;
     height: 30px;
@@ -87,10 +112,12 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .submit-button::after {
     content: '↑';
     font-size: 18px;
 }
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -98,14 +125,17 @@ body {
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
+
 .header h1 {
     margin: 0;
     font-size: 24px;
 }
+
 .header-icons {
     display: flex;
     gap: 10px;
 }
+
 .header-icon {
     width: 24px;
     height: 24px;
@@ -116,45 +146,6 @@ body {
 div.add-task form {
     display: contents;
 }
-
-@media (min-width: 576px) {
-    .day-card {
-        flex: 1 1 calc(50% - 10px);
-        max-width: calc(50% - 10px);
-    }
-}
-
-@media (min-width: 768px) {
-    .day-card {
-        flex: 1 1 calc(33.333% - 13.333px);
-        max-width: calc(33.333% - 13.333px);
-    }
-    .header h1 {
-        font-size: 28px;
-    }
-}
-
-@media (min-width: 992px) {
-    .day-card {
-        flex: 1 1 calc(25% - 15px);
-        max-width: calc(25% - 15px);
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        justify-content: flex-start;
-    }
-    .day-card {
-        flex: 1 1 calc(14.285% - 17.142px);
-        max-width: calc(14.285% - 17.142px);
-    }
-    .header h1 {
-        font-size: 32px;
-    }
-}
-
-/* Add these CSS rules to your existing stylesheet */
 
 .remove-task-button,
 .remove-all-button {
@@ -195,15 +186,62 @@ div.add-task form {
     color: #333;
 }
 
-/* Ensure the task list doesn't overflow */
 .task-list {
-    max-height: calc(100% - 40px); /* Adjust if needed */
+    max-height: calc(100% - 40px);
     overflow-y: auto;
 }
 
-.task {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
+/* Scrollbar styling */
+.task-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.task-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media (min-width: 576px) {
+    .day-card {
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (min-width: 768px) {
+    .day-card {
+        flex: 1 1 calc(33.333% - 13.333px);
+        max-width: calc(33.333% - 13.333px);
+    }
+    .header h1 {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 992px) {
+    .day-card {
+        flex: 1 1 calc(25% - 15px);
+        max-width: calc(25% - 15px);
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        justify-content: flex-start;
+    }
+    .day-card {
+        flex: 1 1 calc(14.285% - 17.142px);
+        max-width: calc(14.285% - 17.142px);
+    }
+    .header h1 {
+        font-size: 32px;
+    }
 }
