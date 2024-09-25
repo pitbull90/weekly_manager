@@ -74,12 +74,25 @@ function removeAllTasks(dayId) {
   saveTasks(dayId);
 }
 
-// Add "Clear All" buttons to each day card
-function addClearAllButtons() {
+// Add "Clear All" buttons to each day card and highlight current day
+function addClearAllButtonsAndHighlightToday() {
   const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-  days.forEach((day) => {
+  const today = new Date().getDay(); // 0 is Sunday, 1 is Monday, etc.
+
+  days.forEach((day, index) => {
     const dayCard = document.getElementById(`${day}_card`);
+    const dayHeader = dayCard.querySelector('.day-title');
     const dayFooter = dayCard.querySelector('.day-footer');
+
+    // Add "(today)" text for the current day
+    if ((today === 0 && index === 6) || (today === index + 1)) {
+      const todaySpan = document.createElement('span');
+      todaySpan.setAttribute('class', 'today')
+      todaySpan.textContent = ' (today)';
+      dayHeader.appendChild(todaySpan);
+    }
+
+    // Add "Clear All" button
     const clearAllButton = document.createElement('button');
     clearAllButton.textContent = 'Clear All';
     clearAllButton.setAttribute('class', 'remove-all-button');
@@ -93,5 +106,5 @@ function addClearAllButtons() {
 // Call these functions when the page loads
 document.addEventListener('DOMContentLoaded', () => {
   loadTasks();
-  addClearAllButtons();
+  addClearAllButtonsAndHighlightToday();
 });

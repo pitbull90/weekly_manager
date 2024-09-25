@@ -29,6 +29,12 @@ body {
     flex-direction: column;
 }
 
+span.today {
+    font-size: 0.8em;
+    color: rgb(136, 136, 136);
+    font-weight: normal;
+}
+
 .day-title {
     font-weight: bold;
     margin-bottom: 15px;
