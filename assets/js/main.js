@@ -1,34 +1,58 @@
+// Load tasks from local storage
+function loadTasks() {
+  const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+  days.forEach((day) => {
+    const tasks = JSON.parse(localStorage.getItem(`tasks_${day}`)) || [];
+    const taskList = document.getElementById(`taskList${capitalizeFirstLetter(day)}`);
+    tasks.forEach((taskText) => {
+      const taskItem = createTaskElement(taskText);
+      taskList.appendChild(taskItem);
+    });
+  });
+}
+
+// Save tasks to local storage
+function saveTasks(dayId) {
+  const taskList = document.getElementById(`taskList${capitalizeFirstLetter(dayId)}`);
+  const tasks = Array.from(taskList.children).map(task => task.querySelector('.task-label').textContent);
+  localStorage.setItem(`tasks_${dayId}`, JSON.stringify(tasks));
+}
+
+// Create a task element
+function createTaskElement(taskText) {
+  const taskItem = document.createElement('div');
+  taskItem.setAttribute('class', 'task');
+
+  const task = document.createElement('label');
+  task.setAttribute('class', 'task-label');
+  task.textContent = taskText;
+
+  const removeButton = document.createElement('button');
+  removeButton.textContent = '×';
+  removeButton.setAttribute('class', 'remove-task-button');
+  removeButton.setAttribute('title', 'Remove task');
+  removeButton.onclick = function () {
+    removeTask(taskItem);
+  };
+
+  taskItem.appendChild(task);
+  taskItem.appendChild(removeButton);
+  return taskItem;
+}
+
 // Add task to respective day of the week
 function addTask(event, dayId, inputId) {
-  event.preventDefault(); // Prevent form submission from reloading the page
+  event.preventDefault();
 
   const taskInput = document.getElementById(inputId);
-  const taskList = document.getElementById(
-    `taskList${capitalizeFirstLetter(dayId)}`
-  );
+  const taskList = document.getElementById(`taskList${capitalizeFirstLetter(dayId)}`);
   const taskValue = taskInput.value.trim();
 
   if (taskValue) {
-    const taskItem = document.createElement('div');
-    taskItem.setAttribute('class', 'task');
-
-    const task = document.createElement('label');
-    task.setAttribute('class', 'task-label');
-    task.textContent = taskValue; // Set the task value as the label text
-
-    const removeButton = document.createElement('button');
-    removeButton.textContent = '×'; // Using × instead of 'Remove' for a more minimal look
-    removeButton.setAttribute('class', 'remove-task-button');
-    removeButton.setAttribute('title', 'Remove task'); // Add a tooltip
-    removeButton.onclick = function () {
-      removeTask(taskItem);
-    };
-
-    taskItem.appendChild(task);
-    taskItem.appendChild(removeButton);
+    const taskItem = createTaskElement(taskValue);
     taskList.appendChild(taskItem);
-
-    taskInput.value = ''; // Clear input field after adding task
+    taskInput.value = '';
+    saveTasks(dayId);
   }
 }
 
@@ -38,28 +62,21 @@ function capitalizeFirstLetter(str) {
 
 // Remove individual task
 function removeTask(taskItem) {
+  const dayId = taskItem.closest('.day-card').id.replace('_card', '');
   taskItem.remove();
+  saveTasks(dayId);
 }
 
 // Remove all tasks for a specific day
 function removeAllTasks(dayId) {
-  const taskList = document.getElementById(
-    `taskList${capitalizeFirstLetter(dayId)}`
-  );
+  const taskList = document.getElementById(`taskList${capitalizeFirstLetter(dayId)}`);
   taskList.innerHTML = '';
+  saveTasks(dayId);
 }
 
 // Add "Clear All" buttons to each day card
 function addClearAllButtons() {
-  const days = [
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-    'saturday',
-    'sunday',
-  ];
+  const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   days.forEach((day) => {
     const dayCard = document.getElementById(`${day}_card`);
     const dayFooter = dayCard.querySelector('.day-footer');
@@ -73,5 +90,8 @@ function addClearAllButtons() {
   });
 }
 
-// Call this function when the page loads
-document.addEventListener('DOMContentLoaded', addClearAllButtons);
+// Call these functions when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  loadTasks();
+  addClearAllButtons();
+});
